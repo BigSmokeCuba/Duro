@@ -36,7 +36,8 @@ async def progress_upload(filename, currentBits, totalBits, speed , time, args, 
 
         text += '➤ Total: '+sizeof_fmt(totalBits)+'\n\n'
 
-        text += '➤ Descargado: '+sizeof_fmt(currentBits)+'\n\n'
+
+        text += '➤ Descargado: '+sizeof_fmt(currentBits)+'\n\n'\n\n'
 
         text += '➤ Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
 
@@ -134,6 +135,11 @@ async def upload(ev,bot,jdb,message_edited=None):
                          filesize = get_file_size(item)
                          text = '📡 Subiendo ivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
+                         text += text_progres(currentBits,totalBits)+'\n'
+                         text += '➤ Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n' 
+                         text += '➤ Descargado: '+sizeof_fmt(currentBits)+'\n\n'\n\n'
+                         text += '➤ Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
+                         text += '➤ Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n'
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
                          if len(files)>1:
                             text += '📚 '+str(len(files))+' Partes\n'
