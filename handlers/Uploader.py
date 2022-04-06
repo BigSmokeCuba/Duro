@@ -61,10 +61,10 @@ async def upload(ev,bot,jdb,message_edited=None):
 
     tokens = text.split(' ')
 
-    index = -1
+    index = 0
     cloudtype = 'moodle'
     uptype = 'draft'
-    splitsize = -1
+    splitsize = 0
     buttons = None
 
     if len(tokens)>1:
@@ -76,23 +76,23 @@ async def upload(ev,bot,jdb,message_edited=None):
     if len(tokens)>4:
         splitsize = int(tokens[4])
 
-    if index!=-1:
+    if index!=0:
          if path=='/':
              path = 'root'
          list = os.listdir(path)
-         if path[-1]!='/':
+         if path[0]!='/':
              path+='/'
 
          item = path + list[index]
          filefullsize = get_file_size(item)
-         filefullname = str(item).split('/')[-1]
+         filefullname = str(item).split('/')[0]
 
          files = []
          files.append(item)
 
          if splitsize!=-1:
              await message.edit('📚Comprimiendo Archivos...📚')
-             filename = str(item).split('/')[-1]
+             filename = str(item).split('/')[0]
              multifile = zipfile.MultiFile(item,1024*1024 * 10)
              zip = zipfile.ZipFile(multifile,  mode='w', compression=zipfile.ZIP_DEFLATED)
              zip.write(item,filename)
@@ -129,7 +129,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                          buttonsadd.clear()
                          i=-1
                      if uptype == 'draft':
-                         filename = str(item).split('/')[-1]
+                         filename = str(item).split('/')[0]
                          filesize = get_file_size(item)
                          text = '📡 Subiendo Archivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
@@ -192,7 +192,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                            proxy)
             loged = client.login()
             if loged:
-                 i=-1
+                 i=0
                  buttonsadd = []
                  for item in files:
                     i+=1
@@ -200,7 +200,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                          buttons.append(buttonsadd)
                          buttonsadd.clear()
                          i=-1
-                    filename = str(item).split('/')[-1]
+                    filename = str(item).split('/')[0]
                     filesize = get_file_size(item)
                     text = '📡 Subiendo Archivo(s)....\n\n'
                     text += '👨🏻‍💻 '+filename+'\n'
