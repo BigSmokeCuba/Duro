@@ -109,7 +109,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                          buttonsadd.clear()
                          i=-1
                      if uptype == 'draft':
-                         filename = str(item).split('/')[-1]
+                         filename = str(item).split('/')[0]
                          filesize = get_file_size(item)
                          text = '📡 Subiendo Archivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
