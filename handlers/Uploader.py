@@ -133,7 +133,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                      if uptype == 'draft':
                          filename = str(item).split('/')[-1]
                          filesize = get_file_size(item)
-                         text = '📡 Subiendo ivo(s)....\n\n'
+                         text = '📡 Subiendo Archivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
                          text += text_progres(currentBits,totalBits)+'\n'
                          text += '➤ Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n' 
