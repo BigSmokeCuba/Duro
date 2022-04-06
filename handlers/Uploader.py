@@ -117,7 +117,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                          if len(files)>1:
                             text += '📚 '+str(len(files))+' Partes\n'
                          await message.edit(text)
-                         itemid,data = await client.upload_file_draft(item,itemidprogress_upload,(bot,message))
+                         itemid,data = await client.upload_file_draft(item,draft,itemid,progress_upload,(bot,message))
                          text = '💚 Subiendo con Éxito 💚\n\n'
                          text += '👨🏻‍💻 '+filefullname+'\n'
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
