@@ -70,7 +70,7 @@ async def upload(ev,bot,jdb,message_edited=None):
          files = []
          files.append(item)
 
-         if splitsize!=0:
+         if splitsize!=10:
              await message.edit('📚Comprimiendo Archivos...📚')
              filename = str(item).split('/')[-1]
              multifile = zipfile.MultiFile(item,1024*1024 * 10)
