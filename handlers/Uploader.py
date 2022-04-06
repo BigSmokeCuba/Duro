@@ -41,7 +41,7 @@ async def upload(ev,bot,jdb,message_edited=None):
 
     tokens = text.split(' ')
 
-    index = -1
+    index = 0
     cloudtype = 'moodle'
     uptype = 'draft'
     splitsize = 0
@@ -60,7 +60,7 @@ async def upload(ev,bot,jdb,message_edited=None):
          if path=='/':
              path = 'root'
          list = os.listdir(path)
-         if path[-1]!='/':
+         if path[0]!='/':
              path+='/'
 
          item = path + list[index]
