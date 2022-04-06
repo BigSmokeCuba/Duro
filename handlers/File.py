@@ -7,7 +7,7 @@ from pydownloader.tltdownloader import TLTDownloader
 
 import infos
 
-from utils import get_file_size,sizeof_fmt,nice_time
+from utils import get_file_size,get_file_size,sizeof_fmt,nice_time,text_progres,porcent,b_to_str
 
 import shutil
 
