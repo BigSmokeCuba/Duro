@@ -19,19 +19,37 @@ import asyncio
 async def progress_upload(filename, currentBits, totalBits, speed , time, args, stop=False):
     try:
         bot = args[0]
+
         message = args[1]
+
+        id = args[2]
+
         text = '<b>'
-        text += '📡 Subiendo Archivo....\n\n'
+
+        text += '📡 Descargando Archivo....\n\n'
+
         text += '➤ Archivo: '+filename+'\n'
+
         text += text_progres(currentBits,totalBits)+'\n'
+
         text += '➤ Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
+
         text += '➤ Total: '+sizeof_fmt(totalBits)+'\n\n'
+
         text += '➤ Descargado: '+sizeof_fmt(currentBits)+'\n\n'
+
         text += '➤ Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
+
         text += '➤ Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n'
+
         text += '</b>'
-        await message.edit(text,parse_mode='HTML')
+
+        await message.edit(text,parse_mode='HTML',
+
+                           buttons=[[Button.inline('💢Cancelar💢','cancel_download '+str(id))]])
+
     except Exception as ex:
+
         print(str(ex))
 
 async def upload(ev,bot,jdb,message_edited=None):
