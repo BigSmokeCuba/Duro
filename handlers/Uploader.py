@@ -132,7 +132,7 @@ async def upload(ev,bot,jdb,message_edited=None):
                      if uptype == 'draft':
                          filename = str(item).split('/')[-1]
                          filesize = get_file_size(item)
-                         text = '📡 Subiendo Archivo(s)....\n\n'
+                         text = '📡 Subiendo ivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
                          if len(files)>1:
