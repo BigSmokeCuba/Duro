@@ -88,7 +88,7 @@ async def upload(ev,bot,jdb,message_edited=None):
 
     cloudtype = 'moodle'
 
-    uptype = 'draft'
+    uptype = 'evidencia'
 
     splitsize = -1
 
