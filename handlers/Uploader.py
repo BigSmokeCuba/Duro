@@ -109,19 +109,49 @@ async def upload(ev,bot,jdb,message_edited=None):
                          buttonsadd.clear()
                          i=-1
                      if uptype == 'draft':
-                         filename = str(item).split('/')[-1]
+                         
                          filesize = get_file_size(item)
                          text = '📡 Subiendo Archivo(s)....\n\n'
+                         text = '<b>'
+
+                         text += '💚 Descargado con Éxito 💚\n\n'
+
+                         filename = str(file).split('/')[-1]
+
                          text += '👨🏻‍💻 '+filename+'\n'
-                         text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
-                         if len(files)>1:
-                            text += '📚 '+str(len(files))+' Partes\n'
-                         await message.edit(text,parse_mode='HTML')
-                         itemid,data = await client.upload_file_draft(item,progress_upload,(bot,message))
-                         text = '💚 Subiendo con Éxito 💚\n\n'
-                         text += '👨🏻‍💻 '+filefullname+'\n'
-                         text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
-                         if 'url' in data:
+
+                         text += '📦Tamaño Total: '+sizeof_fmt(filesize)+' \n'
+
+                         text += '</b>'
+                     else:
+
+                         text = '<b>'
+
+                         text += '❌ Se Cancelo La Descarga ❌\n'
+
+                         filename = str(file).split('/')[-1]
+
+                         text += '👨🏻‍💻 '+filename+'\n'
+                            
+
+                     try:
+
+                         await message.edit(text=text, buttons=buttons,parse_mode='HTML')
+
+                         except Exception as ex:
+
+                         await bot.send_message(ev.sender_id,text, buttons=buttons,parse_mode='HTML')
+ 
+                         except Exception as ex:
+  
+                         text = f'❌'+str(ex)+'❌'
+
+                         await message.edit(text=text,parse_mode='HTML')
+  
+                        pass
+
+                         pass
+                     if 'url' in data:
                             buttonsadd.append(Button.url('🔗'+filename+'🔗',data['url']))
                      if uptype == 'evidencia':
                          filename = str(item).split('/')[-1]
