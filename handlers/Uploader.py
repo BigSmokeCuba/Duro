@@ -227,6 +227,8 @@ async def upload(ev,bot,jdb,message_edited=None):
                          text = '📡 Subiendo Archivo(s)....\n\n'
 
                          text += '👨🏻‍💻 '+filename+'\n'
+                         text += text_progres(currentBits,totalBits)+'\n'
+                         text += '➤ Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
 
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
 
