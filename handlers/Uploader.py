@@ -56,7 +56,7 @@ async def upload(ev,bot,jdb,message_edited=None):
     if len(tokens)>4:
         splitsize = int(tokens[4])
 
-    if index!=-1:
+    if index!=0:
          if path=='/':
              path = 'root'
          list = os.listdir(path)
@@ -65,7 +65,7 @@ async def upload(ev,bot,jdb,message_edited=None):
 
          item = path + list[index]
          filefullsize = get_file_size(item)
-         filefullname = str(item).split('/')[-1]
+         filefullname = str(item).split('/')[0]
 
          files = []
          files.append(item)
