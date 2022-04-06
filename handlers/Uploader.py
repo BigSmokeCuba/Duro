@@ -44,7 +44,7 @@ async def upload(ev,bot,jdb,message_edited=None):
     index = -1
     cloudtype = 'moodle'
     uptype = 'draft'
-    splitsize = 10
+    splitsize = 15
     buttons = None
 
     if len(tokens)>1:
@@ -73,7 +73,7 @@ async def upload(ev,bot,jdb,message_edited=None):
          if splitsize!=-1:
              await message.edit('📚Comprimiendo Archivos...📚')
              filename = str(item).split('/')[-1]
-             multifile = zipfile.MultiFile(item,1024*1024 * 10)
+             multifile = zipfile.MultiFile(item,1024*1024 * 15)
              zip = zipfile.ZipFile(multifile,  mode='w', compression=zipfile.ZIP_DEFLATED)
              zip.write(item,filename)
              zip.close()
