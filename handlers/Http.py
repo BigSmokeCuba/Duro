@@ -6,8 +6,10 @@ from telethon import Button,TelegramClient
 from pydownloader.downloader import Downloader
 
 import infos
+import zipfile
+import asyncio
 
-from utils import get_file_size,sizeof_fmt,nice_time,text_progres,porcent,b_to_str
+from utils import get_file_size,get_file_size,sizeof_fmt,nice_time,text_progres,porcent,b_to_str
 
 
 Downloaders = []
